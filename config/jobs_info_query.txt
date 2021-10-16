@@ -1,0 +1,14 @@
+query {
+  jobs {
+    title,
+    tags {
+      name
+    }
+    description,
+    company {
+      name
+    }
+    locationNames,
+    postedAt
+  }
+}
