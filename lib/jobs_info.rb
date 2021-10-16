@@ -4,7 +4,7 @@ require 'http'
 require 'yaml'
 
 def main
-  query = File.read('config/query.txt')
+  query = File.read('config/jobs_info_query.txt')
   response = HTTP.post('https://api.graphql.jobs/', json: { query: query })
   results = response.parse
   data = results_to_data(results)
