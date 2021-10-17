@@ -6,7 +6,6 @@ require 'yaml'
 require_relative '../lib/graphql_api'
 
 CORRECT_QUERY = File.read('config/jobs_info_query.txt')
-CORRECT = YAML.safe_load(File.read('spec/fixtures/graphql_jobs_results.yml'))
 
 describe 'Test GraphQLApi library' do
   describe 'HTTP communication' do
