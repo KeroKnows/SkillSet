@@ -12,7 +12,7 @@ describe 'Test GraphQLApi library' do
   describe 'HTTP communication' do
     it 'HAPPY: should fetch with correct query' do
       result = SkillSet::GraphQLApi.new.fetch(CORRECT_QUERY)
-      result
+      _(result).wont_be_empty
     end
 
     it 'HAPPY: job list should be JobInfo' do

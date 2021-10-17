@@ -4,7 +4,7 @@ require 'http'
 require_relative 'jobs'
 
 # [debug]
-require 'yaml'
+# require 'yaml'
 # [end] debug
 
 module SkillSet
