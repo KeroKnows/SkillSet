@@ -8,14 +8,20 @@ FIXTURE_PATH = 'spec/fixtures'
 def main
   fixture_dir_exist?
   query = File.read('config/jobs_info_query.txt')
-  response = HTTP.post('https://api.graphql.jobs/', json: { query: query })
-  results = response.parse
-  data = results_to_data(results)
+  data = request_data('https://api.graphql.jobs/', query)
   File.write('spec/fixtures/graphql_jobs_results.yml', data.to_yaml)
 end
 
 def fixture_dir_exist?
   raise "directory of fixtures: #{FIXTURE_PATH} does NOT exist. please CREATE IT FIRST." unless Dir.exist? FIXTURE_PATH
+end
+
+def request_data(api_url, query)
+  response = HTTP.post(api_url, json: { query: query })
+  raise "Request data failed. HTTP status code: #{response.code}" unless response.code == 200
+
+  results = response.parse
+  results_to_data(results)
 end
 
 def results_to_data(results)
