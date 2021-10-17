@@ -8,13 +8,14 @@ require 'yaml'
 # [end] debug
 
 module SkillSet
+  # Library for GraphQL API Handling
   class GraphQLApi
     API_PATH = 'https://api.graphql.jobs/'
 
     module Errors
       class NotFound < StandardError; end
-      class InvalidQuery < StandardError; end
-      class InternalError < StandardError; end
+      class InvalidQuery < StandardError; end # rubocop:disable Layout/EmptyLineBetweenDefs
+      class InternalError < StandardError; end # rubocop:disable Layout/EmptyLineBetweenDefs
     end
 
     HTTP_ERROR = {

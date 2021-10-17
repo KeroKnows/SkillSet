@@ -1,5 +1,7 @@
+# frozen_string_literal: true
 
 module SkillSet
+  # Library for job information
   class JobInfo
     def initialize(data)
       @data = parse_job(data)

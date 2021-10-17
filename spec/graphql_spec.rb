@@ -12,11 +12,12 @@ describe 'Test GraphQLApi library' do
   describe 'HTTP communication' do
     it 'HAPPY: should fetch with correct query' do
       result = SkillSet::GraphQLApi.new.fetch(CORRECT_QUERY)
+      result
     end
 
     it 'HAPPY: job list should be JobInfo' do
       jobs = SkillSet::GraphQLApi.new.job_list
-      jobs.each { |job| _(job).must_be_instance_of SkillSet::JobInfo}
+      jobs.each { |job| _(job).must_be_instance_of SkillSet::JobInfo }
     end
 
     it 'SAD: should raise exception on invalid queries' do
@@ -24,7 +25,6 @@ describe 'Test GraphQLApi library' do
         SkillSet::GraphQLApi.new.fetch('query: { invalid }')
       end).must_raise SkillSet::GraphQLApi::Errors::InvalidQuery
     end
-
   end
 
   describe 'JobInfo' do
@@ -45,5 +45,4 @@ describe 'Test GraphQLApi library' do
       _(@job).must_respond_to :full_info
     end
   end
-  
 end
