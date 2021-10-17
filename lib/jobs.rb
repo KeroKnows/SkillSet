@@ -24,11 +24,17 @@ module SkillSet
     def parse_job(job)
       {
         'title' => job['title'],
-        'tags' => job['tags'],
+        'tags' => job['tags'].map { |tag| tag['name'] },
         'description' => job['description'],
-        'company' => job['company'],
-        'location' => job['location'],
-        'posted_date' => job['posted_date']
+        'company' => job['company']['name'],
+        'location' => job['locationNames'],
+        'posted_date' => job['postedAt'].split('T').first
+        # 'title' => job['title'],
+        # 'tags' => job['tags'],
+        # 'description' => job['description'],
+        # 'company' => job['company'],
+        # 'location' => job['location'],
+        # 'posted_date' => job['posted_date']
       }
     end
   end
