@@ -26,7 +26,7 @@ module SkillSet
 
     def job_list
       query = File.read('config/jobs_info_query.txt')
-      jobs_data = fetch(query)
+      jobs_data = fetch(query)['jobs']
       jobs_data.map { |job| JobInfo.new(job) }
     end
 
@@ -37,8 +37,7 @@ module SkillSet
       response = response.parse
       raise(HTTP_ERROR[500]) unless valid?(response)
 
-      # response = YAML.safe_load(File.read('spec/fixtures/graphql_jobs_results.yml'))
-      response
+      response['data']
     end
 
     private
